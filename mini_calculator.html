@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>calculator</title>
+    <style>
+    button{
+      width: 50px;
+      height: 40px;
+      margin: 5px;
+      font-size: 15pt;
+    }
+    .ss{
+      width: 112px;
+      height: 40px;
+      margin: 5px;
+      font-size: 15pt;
+    }
+    #input_text{
+      width: 235px;
+      height: 40px;
+      margin: 5px;
+      border:2px solid red;
+      font-size: 22pt;
+      text-align: right;
+    }
+    </style>
+
+
+  </head>
+  <body>
+
+      <table align="center" cellspacing="0" style="border:2px solid black;">
+  			<tr>
+  					<td colspan='4'>
+  						<input type="text" value='0' id='input_text'></input>
+  					</td>
+  			</tr>
+  			</div>
+  			<!--buttons-->
+  			<tr>
+  					<td colspan="2"><button class="btn ss" onclick="button_click(this.value);" value='C'>C</button></td>
+  					<td colspan="2"><button class="btn ss" onclick="button_click(this.value);" value='='>=</button></td>
+  				</tr>
+  			<tr>
+  				<td><button class="btn" onclick="button_click(this.value);" value='7'>7</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='8'>8</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='9'>9</button></td>
+          <td><button class="btn" onclick="button_click(this.value);" value='+'>+</button></td>
+  			</tr>
+  			<tr>
+  				<td><button class="btn" onclick="button_click(this.value);" value='4'>4</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='5'>5</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='6'>6</button></td>
+          <td><button class="btn" onclick="button_click(this.value);" value='-'>-</button></td>
+  			</tr>
+  			<tr>
+  				<td><button class="btn" onclick="button_click(this.value);" value='1'>1</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='2'>2</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='3'>3</button></td>
+          <td><button class="btn" onclick="button_click(this.value);" value='*'>*</button></td>
+  			</tr>
+  			<tr>
+  				<td colspan="2"><button class="btn ss" onclick="button_click(this.value);" value='0'>0</button></td>
+  				<td><button class="btn" onclick="button_click(this.value);" value='.'>.</button></td>
+          <td><button class="btn" onclick="button_click(this.value);" value='/'>/</button></td>
+  			</tr>
+  		</table>
+    
+    <script type="text/javascript">
+
+    function reset(){
+      document.getElementById('input_text').value = "0";
+    }
+
+    function button_click(e){
+      var key = e;
+      var value = document.getElementById('input_text').value;
+
+      if(value == 0 || value == "INPUT"){
+          document.getElementById('input_text').value = '';
+          value = "";
+        }
+      // calculate
+      if(key == "="){
+        try{
+            var tmp = eval(value);
+            tmp = tmp.toString();
+            document.getElementById('input_text').value = tmp;
+        }catch (execption){
+          document.getElementById('input_text').value = "ERROR";
+        }
+      }
+      // clear
+      else if(key == "C"){
+        document.getElementById('input_text').value = "0";
+      }
+      // input text
+      else{
+        value += key;
+        document.getElementById('input_text').value = value;
+      }
+    }
+
+    </script>
+  </body>
+</html>

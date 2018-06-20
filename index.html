@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>첫 페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded" rel="stylesheet">
+    <style type="text/css">
+    #top{
+      background-color: black;
+      color: white;
+      position: relative;
+      top: 0px;
+      width: 100%;
+      box-shadow: 0px 10px;
+      height: 20px;
+    }
+    #kw{
+      color: white;
+      display: inline;
+      text-align: left;
+      margin: 0;
+    }
+    #headline{
+      margin: 0;
+      font-size: 70px;
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      vertical-align: middle;
+      border: 1px solid white;
+      padding: 15px;
+      color: white;
+    }
+    #background {
+      background-color: rgb(103,0,0);
+      width: 100%;
+      height: 200px;
+      opacity: 0.7;
+    }
+
+    #menu{
+      color: white;
+      z-index: 5;
+      float: right;
+      padding-right: 15px;
+    }
+
+    #menu > ul {
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    #menu > ul > li {
+        margin: 0 0 0 0;
+        padding: 0 10px 0 0;
+        border : 0;
+        float: left;
+    }
+
+    center.header{
+      color: rgb(204,61,61);
+      font-size: 50px;
+      margin-bottom: 40px;
+    }
+
+
+
+
+    a:link, a:visited, a:active{
+      color: white;
+      text-decoration: none;
+    }
+    a:hover{
+      color: rgb(200,0,0);
+      text-decoration: none;
+    }
+
+    .slideToggle {
+      padding: 40px 30px 20px 30px;
+      font-size: 20px;
+      background-color: #f96c6c;
+      border: solid 1px white;
+      border-radius: 10px;
+      width: 200px;
+      vertical-align: middle;
+      height: 50px;
+      margin: 20px;
+      font-family: 'Encode Sans Semi Expanded', sans-serif;
+
+    }
+    #elements{
+      width: 90%;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+    #left{
+      position: absolute;
+      left: 20%;
+    }
+    #right{
+      position: absolute;
+      left: 60%;
+    }
+    #slider_panel{
+      width: 100%;
+      position: relative;
+      background-color: white;
+    }
+
+    #prev_btn{
+      position: absolute;
+      top: 220;
+      left: 20;
+    }
+    #next_btn {
+      position: absolute;
+      top: 220;
+      left: 98%;
+    }
+    .btn {
+      width: 2em;
+      height: 500px;
+      border: 0;
+      background: #d8d8d8;
+      display:none;
+    }
+
+    #slider {
+      position: relative;
+      margin: auto;
+      padding: 10;
+      padding-top: 20px;
+      list-style: none;
+      width: 90%;
+      height: 500px;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    #slider li {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #slider img {
+      width: 100%;
+      height: 500px;
+    }
+
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script>
+      $(function() {
+        var time = 500;
+        var idx = idx2 = 0;
+        var slide_width = $("#slider").width();
+        var slide_count = 3;
+        $("#slider li:first").css("display", "block");
+
+
+        if(slide_count > 1)
+            $(".btn").css("display", "inline");
+
+        $("#prev_btn").click(function() {
+            if(slide_count > 1) {
+                idx2 = (idx - 1) % slide_count;
+                if(idx2 < 0)
+                    idx2 = slide_count - 1;
+                $("#slider li:hidden").css("left", "-"+slide_width+"px");
+                $("#slider li:eq("+idx+")").animate({ left: "+="+slide_width+"px" }, time, function() {
+                    $(this).css("display", "none").css("left", "-"+slide_width+"px");
+                });
+                $("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "+="+slide_width+"px" }, time);
+                idx = idx2;
+            }
+        });
+
+        $("#next_btn").click(function() {
+            if(slide_count > 1) {
+                idx2 = (idx + 1) % slide_count;
+                $("#slider li:hidden").css("left", slide_width+"px");
+                $("#slider li:eq("+idx+")").animate({ left: "-="+slide_width+"px" }, time, function() {
+                    $(this).css("display", "none").css("left", slide_width+"px");
+                });
+                $("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "-="+slide_width+"px" }, time);
+                idx = idx2;
+            }
+        });
+      });
+    </script>
+
+
+    <script>
+    $(document).ready(function () {
+      $('.slideToggle').hover(function(){
+        $(this).animate({width: 400}, 1000);
+      }, function(){
+        $(this).stop(true, false);
+        $(this).animate({width: 200}, 1000);
+      });
+    });
+    </script>
+
+  </head>
+  <body>
+    <div id="top">
+      <span id="kw"><a href="#">KW Univ. CAFE</a></span>
+
+    </div>
+
+    <div id="background">
+      <center>
+      <div id="headline">
+        BREAK TIME
+      </div>
+      </center>
+    </div>
+
+
+    <div>
+      <div id='canvas'>
+
+          <div class="slider_panel">
+            <button type="button" id="prev_btn" class="btn">◀</button>
+            <button type="button" id="next_btn" class="btn">▶</button>
+            <ul id='slider' >
+              <li><img class="slider_image" src="http://www.caffebene.co.kr/Images/main/Main_%EB%B9%84%EC%A3%BC%EC%96%BC.jpg" alt="#" /></li>
+              <li><img class="slider_image" src="https://www.tomntoms.com/uploadimg/0.16041900_1527160858.jpg" alt="#" /></li>
+              <li><img class="slider_image" src="http://www.caffebene.co.kr/Images/main/Main_180525-%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8-%EC%8B%A0%EB%A9%94%EB%89%B4-%ED%99%88%ED%94%BC%EB%A9%94%EC%9D%B8-%EB%B0%B0%EB%84%88.jpg" alt="" /></li>
+            </ul>
+
+          </div>
+
+        <center>
+          <div id="elements">
+            <div id="left">
+              <div class="slideToggle"> <a href="main.html"> Go Main </a> </div>
+              <div class="slideToggle" style="background: #676751"> <a href="http://www.caffebene.co.kr/" target="_blank"> Caff*ne </a> </div>
+            </div>
+            <div id="right">
+              <div class="slideToggle" style="background: #70a3ec"> <a href="https://www.tomntoms.com/" target="_blank"> Tom*oms </a> </div>
+              <div class="slideToggle" style="background: #25562d"> <a href="http://www.istarbucks.co.kr/index.do" target="_blank"> 별다방 </a> </div>
+            </div>
+          </div>
+        </center>
+
+      </div>
+    </div>
+
+  </body>
+</html>

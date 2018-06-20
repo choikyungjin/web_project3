@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+    /*---------------------------head---------------------------------*/
+    #top{
+      background-color: black;
+      color: white;
+      position: relative;
+      top: 0px;
+      width: 100%;
+      box-shadow: 0px 10px;
+      height: 20px;
+    }
+    #kw{
+      color: white;
+      display: inline;
+      text-align: left;
+      margin: 0;
+    }
+    #headline{
+      margin: 0;
+      font-size: 70px;
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      vertical-align: middle;
+      border: 1px solid white;
+      padding: 15px;
+      color: white;
+    }
+    #background {
+      background-color: rgb(103,0,0);
+      width: 100%;
+      height: 200px;
+      opacity: 0.7;
+    }
+
+    #menu{
+      color: white;
+      z-index: 5;
+      float: right;
+      padding-right: 15px;
+    }
+
+    #menu > ul {
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    #menu > ul > li {
+        margin: 0 0 0 0;
+        padding: 0 10px 0 0;
+        border : 0;
+        float: left;
+    }
+
+    center.header{
+      color: rgb(204,61,61);
+      font-size: 50px;
+      margin-bottom: 40px;
+    }
+    hr{
+      color: rgb(0,0,0);
+      width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .position{
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .picture{
+      display: inline-block;
+      width: 25%;
+      height: auto;
+    }
+    .position li{
+      text-align: left;
+      list-style: none;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .map{
+      display: inline-block;
+      width: 25%;
+      height: auto;
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+    #query{
+      font-family: 견고딕;
+      color: rgb(152,0,0);
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    a:link, a:visited, a:active{
+      color: white;
+      text-decoration: none;
+    }
+    a:hover{
+      color: rgb(200,0,0);
+      text-decoration: none;
+    }
+    #goTotop{
+      position: fixed;
+      bottom: 0;
+      left: 95%;
+      background-color: white;
+      z-index: 9999;
+      cursor: pointer;
+    }
+    #goTotop > img{
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    </style>
+
+  </head>
+  <body>
+    <div id="top">
+      <span id="kw"><a href="#">KW Univ. CAFE</a></span>
+      <div id='menu'>
+        <ul>
+          <li><a href="#" onclick="location.href='./index.html'">MAIN</a></li>
+          <li><a href="#front">FRONT</a></li>
+          <li><a href="#back">BACK</a></li>
+          <li><a href="#campus">CAMPUS</a></li>
+          <li><a href="#station">STATION</a></li>
+          <li onclick='calculator()'>BILL</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="background">
+      <center>
+      <div id="headline">
+        BREAK TIME
+      </div>
+      </center>
+    </div>
+
+    <div id="goTotop" onclick="location.href='#top'">
+      <img src="./pj_img/top.png" alt="">
+      <span>TOP</span>
+    </div>
+    
+    <center>
+    <div id="front">
+      <hr noshade>
+      <center class="header">FRONT</center>
+      <div class='position'>
+        <div id="list1">
+        </div>
+
+        <div class="map">
+          <img src="./pj_img/front지도.jpg" alt="">
+        </div>
+        <div class="picture">
+          <img src="./pj_img/latte.jpg" alt="" id='front_cover'>
+        </div>
+      </div>
+    </div>
+
+      <div id="back">
+        <hr noshade>
+        <center class="header">BACK</center>
+
+        <div class='position'>
+        <div id="list2">
+        </div>
+
+        <div class="map">
+          <img src="./pj_img/back지도.jpg" alt="">
+        </div>
+        <div class="picture">
+          <img src="./pj_img/christmas.jpg" alt=""  id='back_cover'>
+        </div>
+      </div>
+      </div>
+
+      <div id="campus">
+        <hr noshade>
+        <center class="header">CAMPUS</center>
+        <div class='position'>
+        <div id="list3">
+        </div>
+
+        <div class="map">
+          <img src="./pj_img/campus.jpg" alt="">
+        </div>
+        <div class="picture">
+          <img src="./pj_img/campus_main.jpg" alt="" id='campus_cover'>
+        </div>
+      </div>
+      </div>
+
+      <div id="station">
+        <hr noshade>
+        <center class="header">STATION</center>
+        <div class='position'>
+        <div id="list4">
+        </div>
+
+        <div class="map">
+          <img src="./pj_img/station.jpg" alt="">
+        </div>
+        <div class="picture">
+          <img src="./pj_img/starbucks.png" alt="" id='station_cover'>
+        </div>
+      </div>
+    </div>
+
+    <hr noshade>
+    <footer>
+      <div id='query'>
+        수정 문의
+      </div>
+        <br>
+      <strong>E-mail)</strong>  ickz5563@gmail.com  |  <strong>TEL)</strong> 010-2534-5563
+    </footer>
+    </center>
+      <!-- javascript -->
+      <script type='text/javascript' language='javascript'>
+        var c_front = ["NINE O'CLOCK", "카페 베르데", "YOGER PRESSO", "커피만", "EDIYA", "SELECTO COFFEE", "빽다방(PAIK'S COFFEE)"];
+        var c_back = ["COFFEE FIASCO", "작은 커피집", "caf'e olens", "베니스상인", "christmas jamong"];
+        var c_campus = ["PEGASUS", "헨젤 & 그레텔"];
+        var c_station = ["STARBUCKS COFFEE", "커피는 기억의 끌림"];
+        var num = 1;
+
+        // 배열 선언
+        var c_ary = new Array(c_front, c_back, c_campus, c_station);
+        var output;
+
+        function listing_elements(){
+          for(var i=0; i<4; i++){
+            var listing = 'list' + (i+1).toString();
+            var tmp = document.getElementById(listing);
+            mem_list(c_ary[i],tmp);
+            // style 지정
+            tmp.style.display = 'inline';
+            tmp.style.verticalAlign = 'top';
+            tmp.style.fontSize = '15px';
+          }
+        }
+        // 배열의 리스트
+        function mem_list(position,index){
+          output = '';
+          for(var i=0; i<position.length; i++){
+            var tmp = "<li class='list' onmouseover='details(this.value)' value=" + num.toString() + '>';
+            output += tmp + position[i] + '</li>';
+            num++;
+          }
+          index.innerHTML = output;
+        }
+        // 클릭할 때 이벤트
+        function details(e){
+          var number = parseInt(e);
+          var cover;
+
+          switch(number){
+            // front
+            case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+            cover = document.getElementById('front_cover');
+            cover.src = "./pj_img/info_" + e + ".jpg";
+            cover.style.width = '200%';
+            break;
+            // back
+            case 8: case 9: case 10: case 11: case 12:
+            cover = document.getElementById('back_cover');
+            cover.src = "./pj_img/info_" + e + ".jpg";
+            cover.style.width = '200%';
+            break;
+            // campus
+            case 13: case 14:
+            cover = document.getElementById('campus_cover');
+            cover.src = "./pj_img/info_" + e + ".jpg";
+            cover.style.width = '100%';
+            break;
+            // station
+            case 15: case 16:
+            cover = document.getElementById('station_cover');
+            cover.src = "./pj_img/info_" + e + ".jpg";
+            cover.style.width = '200%';
+            break;
+          }
+        }
+        function calculator(){
+          window.open("./mini_calculator.html","","width=300 height=400");
+        }
+
+        window.onload = function(e){
+          listing_elements();
+        }
+
+      </script>
+      <!-- jquery -->
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="./jquery.colorbox-min.js"></script>
+      <link rel="stylesheet" href="./colorbox.css" />
+      <script>
+        // li 태그 mouseover 이벤트
+        $(document).ready(function () {
+          $('li.list').addClass('high-light');
+          $('.high-light').hover(function(){
+            $(this).css('background', 'yellow');
+          }, function(){
+            $(this).css('background', 'white');
+          });
+        });
+        // li 태그 click 이벤트
+        $(document).ready(function () {
+          $('li.list').on('click',function(){
+            var v = $(this).attr('value');
+            //alert(v);
+            var source = "./pj_img/info_" + v + ".jpg";
+            $(this).attr({
+              href: source,
+              width: '100%'
+            });
+            $(this).colorbox();
+          });
+        });
+
+      </script>
+
+  </body>
+</html>
